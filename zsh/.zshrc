@@ -27,16 +27,21 @@ fi
 [ -s "/home/prime/.bun/_bun" ] && source "/home/prime/.bun/_bun"
 alias ic="kitten icat"
 #ezza
-alias lss='eza --icons=always' 
+alias lss='eza -1 --icons=always --group-directories-first' 
 alias l='eza -lh --icons=auto'
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first'
 alias ld='eza -lhD --icons=auto'
 alias lt='eza --icons=auto --always'
 alias s='sudo'
+alias cdp='cd ~/Projects'
+alias cdc='cd ~/.config'
+#bat
+alias bh='bat --color always -l help'
+
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
+export PATH="$HOME/.local/bin:$PATH"
 
 GOPATH=$HOME/go  PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
@@ -45,8 +50,5 @@ eval "$(uvx --generate-shell-completion zsh)"
 
 
 
-# eval "$(togo completion zsh)"
-
-# fpath=(/home/prime/.zsh/completion $fpath)
-# autoload -Uz compinit && compinit
-# eval "$(/home/prime/.local/bin/togo completion zsh)"
+eval "$(/home/prime/.local/bin/togo completion zsh)"
+eval "$(fzf --zsh)"
