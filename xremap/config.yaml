@@ -1,0 +1,10 @@
+keymap:
+  - name: global
+    remap:
+      M-h: left
+      M-j: down
+      M-k: up
+      M-l: right
+modmap:
+  - remap:
+      KEY_RIGHTALT: KEY_BACKSPACE

@@ -19,8 +19,6 @@ function load_zsh_plugins {
     [[ -r $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
 }
 
-# Function to display a slow load warning
-
 # Function to handle initialization errors
 
 # cleaning up home folder
@@ -41,19 +39,21 @@ XDG_VIDEOS_DIR="${XDG_VIDEOS_DIR:-$HOME/Videos}"
 LESSHISTFILE=${LESSHISTFILE:-/tmp/less-hist}
 PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
 # wget
-WGETRC="${XDG_CONFIG_HOME}/wgetrc"
+# WGETRC="${XDG_CONFIG_HOME}/wgetrc"
 SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 
 export XDG_CONFIG_HOME XDG_CONFIG_DIR XDG_DATA_HOME XDG_STATE_HOME XDG_CACHE_HOME XDG_DESKTOP_DIR XDG_DOWNLOAD_DIR \
-    XDG_TEMPLATES_DIR XDG_PUBLICSHARE_DIR XDG_DOCUMENTS_DIR XDG_MUSIC_DIR XDG_PICTURES_DIR XDG_VIDEOS_DIR WGETRC SCREENRC
+    XDG_TEMPLATES_DIR XDG_PUBLICSHARE_DIR XDG_DOCUMENTS_DIR XDG_MUSIC_DIR XDG_PICTURES_DIR XDG_VIDEOS_DIR SCREENRC
 
 if [ -t 1 ]; then
     # We are loading the prompt on start so users can see the prompt immediately
 
     eval "$(starship init zsh)"
     export STARSHIP_CACHE=~/.starship/cache
-    export STARSHIP_CONFIG=~/.config/starship/starshiphyde.toml
+    export STARSHIP_CONFIG=~/.config/starship/starship.toml
     # Starship transient prompt functionality
+
+    eval "$(fzf --zsh)"
 
     PM="pm.sh"
     # Try to find pm.sh in common locations
@@ -97,5 +97,3 @@ if [ -t 1 ]; then
     # Warn if the shell is slow to load
     autoload -Uz add-zsh-hook
 fi
-
-. "$HOME/.cargo/env"
